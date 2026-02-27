@@ -1,0 +1,37 @@
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar__inner">
+
+    <a href="{{ "/dh_hugo_markdown" | relURL }}" class="navbar__brand" aria-label="{{ .Site.Title }} Home">
+      <div class="navbar__logo" aria-hidden="true">DH</div>
+      <span class="navbar__title">{{ .Site.Title }}</span>
+    </a>
+
+    <ul class="navbar__nav" role="menubar">
+      {{- range .Site.Menus.main }}
+        {{- $external := .Params.external | default false }}
+        <li role="none">
+          <a
+            href="{{ .URL | relURL }}"
+            class="navbar__link{{ if $external }} navbar__link--cta{{ end }}"
+            role="menuitem"
+            {{- if $external }} target="_blank" rel="noopener noreferrer"{{ end }}
+          >
+            {{ .Name }}
+          </a>
+        </li>
+      {{- end }}
+    </ul>
+
+    <button
+      class="navbar__hamburger"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="navbar-nav"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</nav>

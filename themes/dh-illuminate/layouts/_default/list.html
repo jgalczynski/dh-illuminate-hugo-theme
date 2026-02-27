@@ -1,0 +1,63 @@
+{{ define "main" }}
+
+<div class="page-hero">
+  <p class="page-hero__eyebrow">✦ {{ .Title }}</p>
+  <h1 class="page-hero__title">{{ .Title }}</h1>
+  {{- with .Content }}
+    <div class="page-hero__desc">{{ . }}</div>
+  {{- else }}
+    <p class="page-hero__desc">Exploring Digital Humanities through the power of Markdown, Hugo, and GitHub Pages.</p>
+  {{- end }}
+</div>
+
+<section class="blog-list">
+  <div class="blog-list__inner">
+
+    {{- $pages := .Pages }}
+    {{- if not $pages }}
+      <p style="text-align:center; color:var(--text-muted); padding:4rem 0;">No posts yet. Add <code>.md</code> files to <code>content/posts/</code>.</p>
+    {{- else }}
+      <div class="posts-grid">
+        {{- range $pages }}
+          {{- $seed := .Slug | default (.Title | urlize) }}
+          <article class="post-card">
+            <a href="{{ .Permalink }}" aria-label="Read: {{ .Title }}">
+              <div class="post-card__image">
+                <img
+                  src="https://picsum.photos/seed/{{ $seed }}/640/360"
+                  alt="{{ .Title }}"
+                  loading="lazy"
+                  width="640"
+                  height="360"
+                >
+              </div>
+            </a>
+            <div class="post-card__body">
+              <div class="post-card__meta">
+                {{- with .Params.tags }}
+                  <span class="post-card__tag">{{ index . 0 }}</span>
+                {{- end }}
+                <time class="post-card__date" datetime="{{ .Date.Format "2006-01-02" }}">
+                  {{ .Date.Format "Jan 2, 2006" }}
+                </time>
+                <span class="reading-chip" style="font-size:0.75rem;color:var(--text-muted);background:var(--gray-100);">{{ .ReadingTime }} min read</span>
+              </div>
+              <h2 class="post-card__title">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </h2>
+              <p class="post-card__excerpt">{{ .Summary }}</p>
+            </div>
+            <div class="post-card__footer">
+              <a href="{{ .Permalink }}" class="post-card__readmore">Read article</a>
+            </div>
+          </article>
+        {{- end }}
+      </div>
+
+      {{- template "_internal/pagination.html" . }}
+    {{- end }}
+
+  </div>
+</section>
+
+{{ end }}

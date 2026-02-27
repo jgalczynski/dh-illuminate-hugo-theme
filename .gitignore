@@ -1,0 +1,86 @@
+# Hugo build output
+public/
+resources/_gen/
+.hugo_build.lock
+
+# Hugo module cache
+/tmp/
+hugo_stats.json
+
+# Asset pipeline
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Editors & IDEs
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# JetBrains
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+Session.vim
+Netrw.cfg
+
+# Emacs
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Logs
+*.log
+npm-debug.log*
+
+# Thumbnails & caches
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Archives (don't commit compiled output)
+*.zip
+*.tar.gz
+*.rar
+
+# GitLab & GitHub CI artifacts
+.cache/

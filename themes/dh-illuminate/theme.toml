@@ -1,0 +1,8 @@
+name = "DH Illuminate"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "A visually striking theme for Digital Humanities publishing platforms. Full markdown support including video/audio embeds, tables, code blocks, and rich typography."
+homepage = "https://github.com/"
+tags = ["blog", "digital-humanities", "academic", "responsive", "dark-mode"]
+features = ["blog", "responsive", "video-embeds", "audio-embeds", "syntax-highlighting", "table-of-contents"]
+min_version = "0.120.0"

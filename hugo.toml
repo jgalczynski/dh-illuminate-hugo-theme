@@ -1,0 +1,55 @@
+baseURL = 'https://your-org.github.io/dh_hugo_markdown/'
+languageCode = 'en-us'
+title = 'DH Illuminate'
+theme = 'dh-illuminate'
+
+[pagination]
+  pagerSize = 6
+
+[params]
+  description = "A modern platform for Digital Humanities scholarship — beautifully presented with GitHub & Hugo."
+  author = "Digital Humanities"
+  heroTitle = "Scholarship. Beautifully Presented."
+  heroSubtitle = "A demonstration of how Hugo + GitHub Pages can power a world-class Digital Humanities publishing platform — no servers, no databases, no infrastructure overhead."
+  heroCTA = "Explore the Blog"
+  heroCTALink = "/posts/"
+  heroSecondaryCTA = "Learn How It Works"
+  heroSecondaryCTALink = "/about/"
+  heroImage = "https://picsum.photos/seed/dh-hero/1920/1080"
+  footerText = "Built with Hugo & GitHub Pages · Open Source · Zero Infrastructure"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "dracula"
+    lineNos = false
+    codeFences = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3
+  [[menu.main]]
+    identifier = "github"
+    name = "GitHub ↗"
+    url = "https://github.com/"
+    weight = 4
+    [menu.main.params]
+      external = true

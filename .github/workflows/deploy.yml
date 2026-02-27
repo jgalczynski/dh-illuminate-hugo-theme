@@ -1,0 +1,81 @@
+name: Deploy Hugo Site to GitHub Pages
+
+on:
+  # Runs on every push to main
+  push:
+    branches:
+      - main
+
+  # Allows manual trigger from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment; cancel any in-progress run
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # ────────────────────────────────────────────────
+  # JOB 1: Build
+  # ────────────────────────────────────────────────
+  build:
+    name: Build Hugo Site
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: "0.157.0"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive # Fetch theme submodules if any
+          fetch-depth: 0 # Full history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true # Required for Hugo Pipes / SCSS
+
+      - name: Setup GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build site
+        env:
+          # Pass the canonical base URL from the Pages configuration
+          HUGO_BASEURL: ${{ steps.pages.outputs.base_url }}/
+        run: |
+          hugo \
+            --minify \
+            --gc \
+            --baseURL "$HUGO_BASEURL"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  # ────────────────────────────────────────────────
+  # JOB 2: Deploy
+  # ────────────────────────────────────────────────
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+
+    # Creates a deployment in the GitHub UI showing the live URL
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

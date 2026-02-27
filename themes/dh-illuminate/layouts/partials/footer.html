@@ -1,0 +1,55 @@
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div>
+      <div class="footer__brand">
+        <div class="navbar__logo" aria-hidden="true">DH</div>
+        <span class="footer__brand-name">{{ .Site.Title }}</span>
+      </div>
+      <p class="footer__tagline">{{ .Site.Params.footerText }}</p>
+    </div>
+
+    <nav class="footer__links" aria-label="Footer navigation">
+      {{- range .Site.Menus.main }} {{- $external := .Params.external | default
+      false }}
+      <a
+        href="{{ .URL | relURL }}"
+        class="footer__link"
+        {{-
+        if
+        $external
+        }}
+        target="_blank"
+        rel="noopener noreferrer"
+        {{
+        end
+        }}
+        >{{ .Name }}</a
+      >
+      {{- end }}
+    </nav>
+  </div>
+
+  <div class="footer__bottom">
+    <span
+      >© {{ now.Format "2006" }} {{ .Site.Params.author }}. Content licensed
+      under
+      <a
+        href="https://creativecommons.org/licenses/by/4.0/"
+        target="_blank"
+        rel="noopener"
+        style="
+          color: rgba(255, 255, 255, 0.6);
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        "
+        >CC BY 4.0</a
+      >.</span
+    >
+    <div class="footer__badges">
+      <span class="footer__badge">Hugo</span>
+      <span class="footer__badge">GitHub Pages</span>
+      <span class="footer__badge">Markdown</span>
+      <span class="footer__badge">Open Source</span>
+    </div>
+  </div>
+</footer>

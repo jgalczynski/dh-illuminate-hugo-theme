@@ -1,0 +1,80 @@
+{{ define "main" }}
+
+{{- $seed := .Slug | default (.Title | urlize) }}
+{{- $image := .Params.image | default (printf "https://picsum.photos/seed/%s/1920/1080" $seed) }}
+
+<!-- ── Post Header ─────────────────────────────────────────── -->
+<header class="post-header">
+  <div
+    class="post-header__bg"
+    style="background-image: url('{{ $image }}')"
+    role="img"
+    aria-label="{{ .Title }} cover image"
+  ></div>
+  <div class="post-header__overlay" aria-hidden="true"></div>
+
+  <div class="post-header__content">
+
+    {{- with .Params.tags }}
+      <div class="post-header__tags">
+        {{- range . }}
+          <span class="post-header__tag">{{ . }}</span>
+        {{- end }}
+      </div>
+    {{- end }}
+
+    <h1 class="post-header__title">{{ .Title }}</h1>
+
+    <div class="post-header__meta">
+      <div class="post-header__author">
+        <div class="post-header__avatar" aria-hidden="true">DH</div>
+        <span class="post-header__meta-item">{{ .Site.Params.author }}</span>
+      </div>
+      <time class="post-header__meta-item" datetime="{{ .Date.Format "2006-01-02" }}">
+        📅 {{ .Date.Format "January 2, 2006" }}
+      </time>
+      <span class="reading-chip">⏱ {{ .ReadingTime }} min read</span>
+    </div>
+
+  </div>
+</header>
+
+<!-- ── Post Body ──────────────────────────────────────────── -->
+<div class="post-layout">
+
+  <article class="post-content" aria-label="Post content">
+    {{ .Content }}
+
+    <!-- ── Post Navigation ── -->
+    {{- $prev := .PrevInSection }}
+    {{- $next := .NextInSection }}
+    {{- if or $prev $next }}
+      <nav class="post-nav" aria-label="Post navigation">
+        <div class="post-nav__item">
+          {{- if $prev }}
+            <span class="post-nav__label">← Previous</span>
+            <a href="{{ $prev.Permalink }}" class="post-nav__title">{{ $prev.Title }}</a>
+          {{- end }}
+        </div>
+        <div class="post-nav__item post-nav__item--next">
+          {{- if $next }}
+            <span class="post-nav__label">Next →</span>
+            <a href="{{ $next.Permalink }}" class="post-nav__title">{{ $next.Title }}</a>
+          {{- end }}
+        </div>
+      </nav>
+    {{- end }}
+
+  </article>
+
+  <!-- ── Table of Contents (desktop sidebar) ── -->
+  {{- if .TableOfContents }}
+    <aside class="post-toc" aria-label="Table of contents">
+      <p class="post-toc__title">On this page</p>
+      {{ .TableOfContents }}
+    </aside>
+  {{- end }}
+
+</div>
+
+{{ end }}

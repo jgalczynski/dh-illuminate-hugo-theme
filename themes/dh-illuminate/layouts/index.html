@@ -1,0 +1,297 @@
+{{ define "main" }}
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-title">
+
+  <div
+    class="hero__bg"
+    style="background-image: url('{{ .Site.Params.heroImage }}')"
+    role="img"
+    aria-label="Abstract scholarly background"
+  ></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <div class="animate-fade-up">
+      <span class="hero__eyebrow">✦ Digital Humanities Platform</span>
+    </div>
+
+    <h1 id="hero-title" class="hero__title animate-fade-up">
+      {{ .Site.Params.heroTitle | markdownify }}
+    </h1>
+
+    <p class="hero__subtitle animate-fade-up">
+      {{ .Site.Params.heroSubtitle }}
+    </p>
+
+    <div class="hero__actions animate-fade-up">
+      <a href="{{ .Site.Params.heroCTALink | relURL }}" class="btn btn--primary">
+        {{ .Site.Params.heroCTA }} →
+      </a>
+      <a href="{{ .Site.Params.heroSecondaryCTALink | relURL }}" class="btn btn--outline">
+        {{ .Site.Params.heroSecondaryCTA }}
+      </a>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">scroll</div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     STATS
+═══════════════════════════════════════════════════════════ -->
+<section class="section section--dark" aria-label="Platform highlights">
+  <div class="section__inner">
+    <div class="stats-banner">
+      <div class="stat-item">
+        <div class="stat-item__number">$0</div>
+        <div class="stat-item__label">Infrastructure Cost</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__number">100%</div>
+        <div class="stat-item__label">Version Controlled</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__number">&lt;1s</div>
+        <div class="stat-item__label">Deploy Time</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__number">∞</div>
+        <div class="stat-item__label">Scalability</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FEATURES
+═══════════════════════════════════════════════════════════ -->
+<section class="section section--dark features-section" aria-labelledby="features-title">
+  <div class="section__inner">
+
+    <header class="section__header">
+      <p class="section__eyebrow">Why Hugo + GitHub Pages</p>
+      <h2 id="features-title" class="section__title">Everything WordPress offers.<br>Without the overhead.</h2>
+      <p class="section__lead">A static site approach gives your team the full authoring power of Markdown with Git-native version control, automated deployment, and zero server maintenance.</p>
+    </header>
+
+    <div class="features-grid features-grid--dark">
+
+      <article class="feature-card feature-card--dark" >
+        <div class="feature-card__icon feature-card__icon--gold">📝</div>
+        <h3 class="feature-card__title">Rich Markdown Authoring</h3>
+        <p class="feature-card__desc">Write directly in GitHub's editor. Headers, bold, italics, tables, code blocks, blockquotes, images, and custom shortcodes all work out-of-the-box.</p>
+        <span class="feature-card__vs">vs WordPress: Visual editor + brittle plugins</span>
+      </article>
+
+      <article class="feature-card feature-card--dark" >
+        <div class="feature-card__icon feature-card__icon--teal">🎬</div>
+        <h3 class="feature-card__title">Video &amp; Audio Embeds</h3>
+        <p class="feature-card__desc">Embed YouTube, Vimeo, or self-hosted audio directly in posts using simple shortcode syntax — no plugins, no iFrame hunting.</p>
+        <span class="feature-card__vs">vs WordPress: Separate embed plugins, maintenance overhead</span>
+      </article>
+
+      <article class="feature-card feature-card--dark" >
+        <div class="feature-card__icon feature-card__icon--blue">🔀</div>
+        <h3 class="feature-card__title">Git-based Workflow</h3>
+        <p class="feature-card__desc">Every post is a commit. Branch for drafts, submit pull requests for peer review, merge to publish. The entire editorial workflow lives in GitHub.</p>
+        <span class="feature-card__vs">vs WordPress: No native version control or peer review</span>
+      </article>
+
+      <article class="feature-card feature-card--dark" >
+        <div class="feature-card__icon feature-card__icon--purple">⚡</div>
+        <h3 class="feature-card__title">One-Push Deployment</h3>
+        <p class="feature-card__desc">A GitHub Actions workflow triggers on every push to <code>main</code>. Hugo builds the site and GitHub Pages serves it — automatically, every time.</p>
+        <span class="feature-card__vs">vs WordPress: Manual deploy or paid CI/CD add-ons</span>
+      </article>
+
+      <article class="feature-card feature-card--dark" >
+        <div class="feature-card__icon feature-card__icon--gold">🔒</div>
+        <h3 class="feature-card__title">Secure by Default</h3>
+        <p class="feature-card__desc">Static HTML has no database, no login surface, and no server-side code to exploit. Security patches are just a Hugo version bump in your workflow file.</p>
+        <span class="feature-card__vs">vs WordPress: ~90% of hacked sites run WordPress</span>
+      </article>
+
+      <article class="feature-card feature-card--dark" >
+        <div class="feature-card__icon feature-card__icon--teal">🌍</div>
+        <h3 class="feature-card__title">Global CDN Included</h3>
+        <p class="feature-card__desc">GitHub Pages serves your content via a global CDN with HTTPS at no cost. Your readers get fast load times wherever they are in the world.</p>
+        <span class="feature-card__vs">vs WordPress: CDN = extra monthly cost &amp; config</span>
+      </article>
+
+      <article class="feature-card feature-card--dark" >
+        <div class="feature-card__icon feature-card__icon--purple">📦</div>
+        <h3 class="feature-card__title">Open &amp; Fully Portable</h3>
+        <p class="feature-card__desc">Everything is plain text files in a Git repo. Clone it, zip it, or archive it in seconds. Your content outlives any CMS, vendor, or hosting arrangement.</p>
+        <span class="feature-card__vs">vs WordPress: Content locked in MySQL — migration is painful and lossy</span>
+      </article>
+
+      <article class="feature-card feature-card--dark" >
+        <div class="feature-card__icon feature-card__icon--blue">🔑</div>
+        <h3 class="feature-card__title">No User Accounts to Manage</h3>
+        <p class="feature-card__desc">There are no site logins, no passwords, no user roles to administer. Author identity lives in Git commits — the most auditable record possible.</p>
+        <span class="feature-card__vs">vs WordPress: Every author needs site credentials; a constant security liability</span>
+      </article>
+
+    </div>
+
+    <!-- Deployment Pipeline Strip -->
+    <div class="pipeline" aria-label="Deployment pipeline: four steps from writing to live site">
+      <div class="pipeline__step">
+        <div class="pipeline__icon">✍️</div>
+        <div class="pipeline__body">
+          <strong class="pipeline__title">Write</strong>
+          <span class="pipeline__detail">Edit a <code>.md</code> file in GitHub's browser editor — no local setup needed</span>
+        </div>
+      </div>
+      <div class="pipeline__arrow" aria-hidden="true"></div>
+      <div class="pipeline__step">
+        <div class="pipeline__icon">💾</div>
+        <div class="pipeline__body">
+          <strong class="pipeline__title">Commit</strong>
+          <span class="pipeline__detail">Click &ldquo;Commit changes&rdquo; directly to <code>main</code> — this is your publish button</span>
+        </div>
+      </div>
+      <div class="pipeline__arrow" aria-hidden="true"></div>
+      <div class="pipeline__step">
+        <div class="pipeline__icon">⚙️</div>
+        <div class="pipeline__body">
+          <strong class="pipeline__title">Build</strong>
+          <span class="pipeline__detail">GitHub Actions triggers automatically, Hugo compiles everything to static HTML</span>
+        </div>
+      </div>
+      <div class="pipeline__arrow" aria-hidden="true"></div>
+      <div class="pipeline__step">
+        <div class="pipeline__icon">🚀</div>
+        <div class="pipeline__body">
+          <strong class="pipeline__title">Live in ~60s</strong>
+          <span class="pipeline__detail">GitHub Pages serves the new build globally via CDN — no server restarts, no downtime</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     RECENT POSTS
+═══════════════════════════════════════════════════════════ -->
+{{- $allPosts := where .Site.RegularPages "Section" "posts" }}
+{{- if $allPosts }}
+{{- $featured := index $allPosts 0 }}
+{{- $rest     := after 1 $allPosts | first 3 }}
+{{- $featuredSeed := $featured.Slug | default ($featured.Title | urlize) }}
+<section class="section" aria-labelledby="posts-title">
+  <div class="section__inner">
+
+    <header class="section__header">
+      <p class="section__eyebrow">Latest from the Blog</p>
+      <h2 id="posts-title" class="section__title">See Markdown in Action</h2>
+      <p class="section__lead">These posts showcase what's possible with plain Markdown files edited directly in GitHub — rich typography, media embeds, code, and more.</p>
+    </header>
+
+    <!-- Featured Post -->
+    <article class="featured-post">
+      <a class="featured-post__image" href="{{ $featured.Permalink }}" aria-label="Read: {{ $featured.Title }}" tabindex="-1">
+        <img
+          src="https://picsum.photos/seed/{{ $featuredSeed }}/900/600"
+          alt="{{ $featured.Title }}"
+          width="900"
+          height="600"
+          loading="eager"
+        >
+        <div class="featured-post__image-overlay" aria-hidden="true"></div>
+      </a>
+      <div class="featured-post__body">
+        <div class="featured-post__meta">
+          <span class="featured-post__badge">✦ Featured</span>
+          {{- with $featured.Params.tags }}
+            <span class="post-card__tag">{{ index . 0 }}</span>
+          {{- end }}
+          <time class="post-card__date" datetime="{{ $featured.Date.Format "2006-01-02" }}">
+            {{ $featured.Date.Format "Jan 2, 2006" }}
+          </time>
+          <span class="reading-chip" style="font-size:0.75rem;color:var(--text-muted);background:var(--gray-100);">{{ $featured.ReadingTime }} min read</span>
+        </div>
+        <h3 class="featured-post__title">
+          <a href="{{ $featured.Permalink }}">{{ $featured.Title }}</a>
+        </h3>
+        <p class="featured-post__excerpt">{{ $featured.Summary }}</p>
+        <a href="{{ $featured.Permalink }}" class="btn btn--teal btn--sm" style="margin-top:1.5rem;">Read article →</a>
+      </div>
+    </article>
+
+    <!-- Remaining Posts Grid -->
+    {{- if $rest }}
+    <div class="posts-grid posts-grid--three" style="margin-top:2rem;">
+      {{- range $rest }}
+        {{- $seed := .Slug | default (.Title | urlize) }}
+        <article class="post-card">
+          <a href="{{ .Permalink }}" aria-label="Read: {{ .Title }}">
+            <div class="post-card__image">
+              <img
+                src="https://picsum.photos/seed/{{ $seed }}/640/360"
+                alt="{{ .Title }}"
+                loading="lazy"
+                width="640"
+                height="360"
+              >
+            </div>
+          </a>
+          <div class="post-card__body">
+            <div class="post-card__meta">
+              {{- with .Params.tags }}
+                <span class="post-card__tag">{{ index . 0 }}</span>
+              {{- end }}
+              <time class="post-card__date" datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "Jan 2, 2006" }}
+              </time>
+            </div>
+            <h3 class="post-card__title">
+              <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h3>
+            <p class="post-card__excerpt">{{ .Summary }}</p>
+          </div>
+          <div class="post-card__footer">
+            <a href="{{ .Permalink }}" class="post-card__readmore">Read article</a>
+          </div>
+        </article>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    <div style="text-align:center; margin-top:3.5rem;">
+      <a href="{{ "/posts/" | relURL }}" class="btn btn--teal">View all posts →</a>
+    </div>
+
+  </div>
+</section>
+{{- end }}
+
+
+
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════════════════════ -->
+<section class="section section--dark" aria-labelledby="cta-title">
+  <div class="section__inner">
+    <div class="cta-banner">
+      <h2 id="cta-title" class="cta-banner__title">Ready to ditch the server?</h2>
+      <p class="cta-banner__desc">Everything you need to run a world-class Digital Humanities publishing platform — already set up and running right here.</p>
+      <div class="cta-banner__actions">
+        <a href="{{ "/posts/" | relURL }}" class="btn btn--primary">Read the blog →</a>
+        <a href="{{ "/about/" | relURL }}" class="btn btn--outline">How it works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}
